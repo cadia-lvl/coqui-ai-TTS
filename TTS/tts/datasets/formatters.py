@@ -592,3 +592,16 @@ def kss(root_path, meta_file, **kwargs):  # pylint: disable=unused-argument
             text = cols[2]  # cols[1] => 6월, cols[2] => 유월
             items.append({"text": text, "audio_file": wav_file, "speaker_name": speaker_name})
     return items
+
+
+def talromur(root_path, meta_file=None, speaker_name=None):
+    items = []
+    with open(os.path.join(root_path, meta_file or "index.tsv")) as index:
+        for row in index:
+            recording_id, text, token_id, text_norm = row.split("\t")
+            items.append({
+                "text": text_norm, 
+                "audio_file": os.path.join(root_path, "audio", f"{recording_id}.wav"), 
+                "speaker_name": speaker_name if speaker_name else recording_id.split("-")[0],
+            })
+    return items
