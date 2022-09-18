@@ -30,7 +30,7 @@ class Ice_G2P_Phonemizer(BasePhonemizer):
 
     @staticmethod
     def name():
-        return "ice_g2p"
+        return "ice_g2p_phonemizer"
 
     @classmethod
     def is_available(cls):
@@ -47,6 +47,7 @@ class Ice_G2P_Phonemizer(BasePhonemizer):
     @staticmethod
     def supported_languages():
         return {
+            "is": "Icelandic (Iceland)",
             "is-is": "Icelandic (Iceland)",
             "is-north": "Icelandic (North Iceland)"
         }

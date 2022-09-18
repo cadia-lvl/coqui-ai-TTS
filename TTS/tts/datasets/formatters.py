@@ -594,8 +594,10 @@ def kss(root_path, meta_file, **kwargs):  # pylint: disable=unused-argument
     return items
 
 
-def talromur(root_path, meta_file=None, speaker_name=None):
+def talromur(root_path, meta_file=None, speaker_name=None, ignored_speakers=None)):
     items = []
+    if ignored_speakers:
+        raise NotImplementedError("It is not possible to ignore speakers")
     with open(os.path.join(root_path, meta_file or "index.tsv")) as index:
         for row in index:
             recording_id, text, token_id, text_norm = row.split("\t")
