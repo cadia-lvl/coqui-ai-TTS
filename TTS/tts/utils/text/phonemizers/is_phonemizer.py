@@ -53,10 +53,19 @@ class Ice_G2P_Phonemizer(BasePhonemizer):
         }
 
     def _phonemize(self, text, separator):
-        return self._g2p.transcribe(text)
+        transcription = []
+        for t in text.split(" "):
+            transcription.append(self._g2p.transcribe(t).replace(" ", separator or ""))
+        return " ".join(transcription)
+
 
     def phonemize(self, text: str, separator="|") -> str:
-        phonemized = self._phonemize(text, separator)
+        text, punctuations = self._phonemize_preprocess(text)
+        phonemized = []
+        for t in text:
+            p = self._phonemize(t, separator)
+            phonemized.append(p)
+        phonemized = self._phonemize_postprocess(phonemized, punctuations)
         return phonemized
 
     def print_logs(self, level: int = 0):
