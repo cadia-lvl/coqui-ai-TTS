@@ -16,14 +16,14 @@ dataset_config = BaseDatasetConfig(
     formatter="talromur", meta_file_train="metadata.csv", path=os.path.join(output_path, "./salka/")
 )
 config = AlignTTSConfig(
-    batch_size=32,
-    eval_batch_size=16,
-    num_loader_workers=4,
-    num_eval_loader_workers=4,
+    batch_size=8,
+    eval_batch_size=4,
+    num_loader_workers=2,
+    num_eval_loader_workers=1,
     run_eval=True,
     test_delay_epochs=-1,
     epochs=1000,
-    text_cleaner="basic_cleaners",
+    text_cleaner="icelandic_cleaners",
     use_phonemes=False,
     phoneme_language="is_is",
     phoneme_cache_path=os.path.join(output_path, "phoneme_cache"),

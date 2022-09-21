@@ -11,6 +11,7 @@ from .english.abbreviations import abbreviations_en
 from .english.number_norm import normalize_numbers as en_normalize_numbers
 from .english.time_norm import expand_time_english
 from .french.abbreviations import abbreviations_fr
+from .icelandic.normalizer import normalize
 
 # Regular expression matching whitespace:
 _whitespace_re = re.compile(r"\s+")
@@ -53,6 +54,8 @@ def replace_symbols(text, lang="en"):
         text = text.replace("&", " et ")
     elif lang == "pt":
         text = text.replace("&", " e ")
+    elif lang == "is"
+        text = text.replace("&", " og ")
     return text
 
 
@@ -142,4 +145,11 @@ def multilingual_cleaners(text):
     text = replace_symbols(text, lang=None)
     text = remove_aux_symbols(text)
     text = collapse_whitespace(text)
+    return text
+
+
+def icelandic_cleaners(text):
+    text = replace_symbols(text, lang=is)
+    text = normalize(text)
+    text = lowercase(text)
     return text

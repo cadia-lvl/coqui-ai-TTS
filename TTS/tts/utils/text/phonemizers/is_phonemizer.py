@@ -63,3 +63,18 @@ class Ice_G2P_Phonemizer(BasePhonemizer):
         indent = "\t" * level
         print(f"{indent}| > phoneme language: {self.language}")
         print(f"{indent}| > phoneme backend: {self.name()}")
+
+
+if __name__ == "__main__":
+    e = Ice_G2P_Phonemizer(language="is-is")
+    print(e.supported_languages())
+    print(e.version())
+    print(e.language)
+    print(e.name())
+    print(e.is_available())
+
+    e = Ice_G2P_Phonemizer(language="is-is", keep_puncs=False)
+    print("`" + e.phonemize("halló hvernig hefur þú það?") + "`")
+
+    e = Ice_G2P_Phonemizer(language="is-is", keep_puncs=True)
+    print("`" + e.phonemize("halló hvernig hefur þú það?") + "`")

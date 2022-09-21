@@ -41,3 +41,4 @@ nltk
 g2pkk>=0.1.1
 # deps of icelandic
 #ice-g2p
+#regina-normalizer
