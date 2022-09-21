@@ -149,7 +149,7 @@ def multilingual_cleaners(text):
 
 
 def icelandic_cleaners(text):
-    text = replace_symbols(text, lang=is)
+    text = replace_symbols(text, lang="is")
     text = normalize(text)
     text = lowercase(text)
     return text
