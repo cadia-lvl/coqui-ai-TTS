@@ -54,7 +54,7 @@ def replace_symbols(text, lang="en"):
         text = text.replace("&", " et ")
     elif lang == "pt":
         text = text.replace("&", " e ")
-    elif lang == "is"
+    elif lang == "is":
         text = text.replace("&", " og ")
     return text
 

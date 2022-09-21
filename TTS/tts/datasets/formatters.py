@@ -594,7 +594,7 @@ def kss(root_path, meta_file, **kwargs):  # pylint: disable=unused-argument
     return items
 
 
-def talromur(root_path, meta_file=None, speaker_name=None, ignored_speakers=None)):
+def talromur(root_path, meta_file=None, speaker_name=None, ignored_speakers=None):
     items = []
     if ignored_speakers:
         raise NotImplementedError("It is not possible to ignore speakers")
