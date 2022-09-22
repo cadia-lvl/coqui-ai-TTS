@@ -55,7 +55,8 @@ class Ice_G2P_Phonemizer(BasePhonemizer):
     def _phonemize(self, text, separator):
         transcription = []
         for t in text.split(" "):
-            transcription.append(self._g2p.transcribe(t).replace(" ", separator or ""))
+            tr = self._g2p.transcribe(t)
+            transcription.append(tr.replace(" ", separator or ""))
         return " ".join(transcription)
 
 
