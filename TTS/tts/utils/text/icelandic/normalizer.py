@@ -1,4 +1,4 @@
-import regina_normalizer.normalizer
+from regina_normalizer import normalizer
 
 
 def normalize(text, domain="other"):
