@@ -72,9 +72,9 @@ class BaseVocabulary:
     def vocab(self, vocab):
         """Set the vocabulary dictionary and character mapping dictionaries."""
         self._vocab = vocab
-        self._char_to_id = {char: idx for idx, char in enumerate(self._vocab)}
+        self._char_to_id = {char: idx for idx, char in enumerate(vocab)}
         self._id_to_char = {
-            idx: char for idx, char in enumerate(self._vocab)  # pylint: disable=unnecessary-comprehension
+            idx: char for idx, char in enumerate(vocab)  # pylint: disable=unnecessary-comprehension
         }
 
     @staticmethod
@@ -235,9 +235,9 @@ class BaseCharacters:
     @vocab.setter
     def vocab(self, vocab):
         self._vocab = vocab
-        self._char_to_id = {char: idx for idx, char in enumerate(self.vocab)}
+        self._char_to_id = {char: idx for idx, char in enumerate(vocab)}
         self._id_to_char = {
-            idx: char for idx, char in enumerate(self.vocab)  # pylint: disable=unnecessary-comprehension
+            idx: char for idx, char in enumerate(vocab)  # pylint: disable=unnecessary-comprehension
         }
 
     @property
