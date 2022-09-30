@@ -18,4 +18,5 @@ cd ice-g2p
 pip install .
 ```
 
+Download the [talrómur dataset](http://hdl.handle.net/20.500.12537/104) and move it to this directory.
 After this you can follow the normal procedure in the main README.md
