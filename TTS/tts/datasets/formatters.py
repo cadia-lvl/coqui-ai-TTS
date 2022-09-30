@@ -605,5 +605,27 @@ def talromur(root_path, meta_file=None, speaker_name=None, ignored_speakers=None
                 "text": text_norm, 
                 "audio_file": os.path.join(root_path, "audio", f"{recording_id}.wav"), 
                 "speaker_name": speaker_name if speaker_name else recording_id.split("-")[0],
+                "root_path": root_path,
             })
     return items
+
+
+def talromur2(root_path, meta_files=None, ignored_speakers=None):
+    items = []
+    meta_files = glob(f"{root_path}/s*/*.tsv", recursive=True)
+    for meta_file in meta_files:
+        if ignored_speakers and any(f"/{isp}/" in meta_file for isp in ignored_speakers):
+            continue
+
+        with open(os.path.join(root_path, meta_file or "index.tsv")) as index:
+            for row in index:
+                recording_id, text, text_norm, token_id, *rest = row.split("\t")
+                speaker_id = recording_id.split("-")[0]
+                items.append({
+                    "text": text_norm,
+                    "audio_file": os.path.join(root_path, speaker_id, "audio", f"{recording_id}.wav"),
+                    "speaker_name": speaker_id,
+                    "root_path": root_path,
+                })
+    return items
+
